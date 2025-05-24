@@ -65,85 +65,13 @@ Este projeto foi construído utilizando as seguintes tecnologias e ferramentas:
 * **[NASA APOD API](https://api.nasa.gov/api.html#apod):** Utilizada para buscar a Imagem Astronômica do Dia, incluindo fotos e vídeos
 * **[NASA Mars Rover Photos API](https://api.nasa.gov/api.html#mars-photos):** Permite acesso a coleção de imagens capturadas pelo rover Curiosity
 
-## 🚀 Como Rodar o Projeto Localmente
+### Veja o Projeto Online!✨
 
-Siga os passos abaixo para configurar e executar o **Diário Espacial NASA** em sua máquina.
+Você pode acessar uma versão deployada do Diário Espacial NASA a qualquer momento neste link:
 
-### Pré-requisitos
-
-* **Python 3.8+**: Certifique-se de ter o Python instalado.
-    * Você pode baixá-lo em [python.org](https://www.python.org/downloads/).
-    * Verifique a instalação com `python3 --version` (macOS/Linux) ou `python --version` (Windows).
+🔗 [Visite o Diário Espacial NASA no Render.com](https://diario-espacial-nasa.onrender.com)
 
 
-* **pip**: O gerenciador de pacotes do Python (geralmente vem com o Python).
+## 👨‍💻 Desenvolvido por
 
-
-* **Git**: Para clonar o repositório.
-    * Baixe em [git-scm.com](https://git-scm.com/downloads).
-
-### 1. Clonar o Repositório
-
-Abra seu terminal e execute:
-
-```bash
-git clone [https://github.com/mcamargos/diario-espacial-nasa.git](https://github.com/mcamargos/diario-espacial-nasa.git)
-cd diario-espacial-nasa 
-```
-### 2. Chave da API da NASA
-
-Para que possa acessar os dados da NASA, é necessário obter uma chave de API gratuita:
-
-1.  Vá para [https://api.nasa.gov/](https://api.nasa.gov/).
-2.  Preencha o formulário para "Generate API Key" (Gerar Chave API) com seu nome e e-mail.
-3.  Você receberá uma chave API por e-mail.
-4.  Crie um novo arquivo chamado **`.env`** na raiz do seu projeto (`diario-espacial-nasa/.env`).
-5.  Adicione sua chave API a este arquivo no seguinte formato:
-
-    ```
-    NASA_API_KEY=SUA_CHAVE_DA_API_AQUI
-    ```
-
-
-### 3. Configurar o Ambiente Python
-
-É recomendável utilizar um ambiente virtual para isolar as dependências do projeto e evitar conflitos com outras instalações Python no seu sistema.
-
-1.  **Criar o Ambiente Virtual:**
-    Abra o terminal na pasta raiz do seu projeto (`diario-espacial-nasa`) e execute:
-
-    ```bash
-    python3 -m venv venv
-    ```
-
-2.  **Ativar o Ambiente Virtual:**
-    Após a criação, ative o ambiente virtual para que as bibliotecas sejam instaladas nele:
-
-    * **macOS / Linux:**
-        ```bash
-        source venv/bin/activate
-        ```
-    * **Windows :**
-        ```cmd
-        venv\Scripts\activate.bat
-        ```
-    * O ambiente está ativo quando `(venv)` aparecer no início da linha de comando no seu terminal.
-
-3.  **Instalar Dependências:**
-    Com o ambiente virtual **ativado**, instale as bibliotecas Python necessárias para o backend executando:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-### 4. Executar a Aplicação
-
-Com o ambiente virtual ativado e todas as dependências instaladas, você pode iniciar o servidor web do Diário Espacial NASA.
-
-No terminal, dentro da pasta raiz do projeto, execute:
-
-```bash
-python app.py
-```
-Você verá uma mensagem no terminal indicando que o servidor Flask está rodando.
-Abra seu navegador e acesse esta URL para ver a aplicação em funcionamento: http://127.0.0.1:5000
+**Matheus Camargos**  
