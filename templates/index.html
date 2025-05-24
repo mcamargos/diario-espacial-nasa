@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário Espacial NASA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="background-image-container"></div>
+
+    <header>
+        <h1>Diário Espacial NASA</h1>
+        <nav>
+            <button id="apod-tab" class="active">APOD do Dia</button>
+            <button id="mars-tab">Fotos de Marte</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="apod-section" class="active">
+            <h2>Imagem Astronômica do Dia</h2>
+            <div class="apod-controls">
+                <button id="prev-day">Dia Anterior</button>
+                <input type="date" id="apod-date-picker">
+                <button id="next-day">Próximo Dia</button>
+            </div>
+            <div id="apod-content">
+                <p>Carregando APOD...</p>
+            </div>
+        </section>
+
+        <section id="mars-section" class="hidden">
+            <h2>Fotos do Mars Rover Curiosity</h2>
+            <div class="mars-controls">
+                <input type="date" id="mars-date-picker">
+                <button id="search-mars-photos">Buscar Fotos</button>
+            </div>
+            <div id="mars-photos-gallery">
+                <p>Selecione uma data e clique em "Buscar Fotos".</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Diário Espacial NASA. Dados fornecidos pela API da NASA.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

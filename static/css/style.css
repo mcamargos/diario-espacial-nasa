@@ -1,0 +1,399 @@
+/* Importar uma fonte do Google Fonts (opcional, mas recomendado para um visual diferenciado) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Roboto+Mono:wght@400;700&display=swap');
+
+:root {
+    --primary-bg: #0a0a0f; /* Fundo muito escuro */
+    --secondary-bg: #1c1c24; /* Elementos um pouco mais claros */
+    --text-color: #e0e0e0; /* Texto claro */
+    --accent-color: #4CAF50; /* Verde de destaque para botões/links */
+    --hover-color: #66BB6A; /* Verde mais claro no hover */
+    --border-color: #333;
+    --card-bg: rgba(28, 28, 36, 0.8); /* Fundo de card semi-transparente */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Evita scroll horizontal indesejado */
+}
+
+/* Base para imagens de fundo imersivas */
+.background-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out; /* Transição suave para imagens */
+}
+
+/* Overlay para escurecer a imagem e melhorar legibilidade do texto */
+.background-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Escurece a imagem de fundo */
+}
+
+
+header {
+    background-color: var(--secondary-bg);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10; /* Para ficar acima do conteúdo principal */
+}
+
+header h1 {
+    font-family: 'Roboto Mono', monospace; /* Fonte diferenciada para o título */
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(76, 255, 80, 0.5);
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav button {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+nav button:hover, nav button.active {
+    background-color: var(--accent-color);
+    color: var(--primary-bg); /* Texto escuro no hover */
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+main {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    position: relative; /* Para posicionar elementos filhos */
+    z-index: 5;
+}
+
+section {
+    width: 100%;
+    background-color: var(--card-bg); /* Fundo semi-transparente para o conteúdo */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    margin-bottom: 2rem;
+}
+
+section.hidden {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    transform: translateY(20px);
+    pointer-events: none; /* Impede interações quando escondido */
+}
+
+section h2 {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.apod-controls, .mars-controls {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.apod-controls button, .mars-controls button, .mars-controls input[type="date"] {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.apod-controls button:hover, .mars-controls button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border-color: var(--accent-color);
+}
+
+/* Estilo para input de data */
+input[type="date"] {
+    appearance: none; /* Remove estilo padrão do navegador */
+    -webkit-appearance: none;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: text;
+}
+/* Altera a cor do texto do placeholder (setas no caso do date input) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Inverte a cor para branco */
+}
+
+#apod-content {
+    text-align: center;
+}
+
+#apod-content img, #apod-content iframe {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    box-shadow: 0 0 15px rgba(76, 255, 80, 0.3);
+    transition: transform 0.3s ease;
+}
+#apod-content img:hover, #apod-content iframe:hover {
+    transform: scale(1.02);
+}
+
+.apod-info {
+    margin-top: 1.5rem;
+    background-color: var(--secondary-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.apod-info h3 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.apod-info p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.apod-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+.apod-info a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+/* Estilos para a galeria de fotos de Marte */
+#mars-photos-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Colunas responsivas */
+    gap: 15px;
+    justify-items: center;
+    margin-top: 1.5rem;
+}
+
+.mars-photo-item {
+    background-color: var(--secondary-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mars-photo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+.mars-photo-item img {
+    width: 100%;
+    height: 150px; /* Altura fixa para miniaturas */
+    object-fit: cover; /* Recorta a imagem para preencher */
+    display: block;
+}
+
+.mars-photo-item p {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* Modal para visualização de fotos em tela cheia */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed; /* Posição fixa sobre todo o conteúdo */
+    z-index: 100; /* Acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Habilita scroll se necessário */
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo preto semi-transparente */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Efeito de blur no fundo */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--accent-color);
+    animation: zoomIn 0.3s ease-out; /* Animação ao abrir */
+}
+
+.modal-content.video-frame {
+    width: 80vw;
+    height: 45vw; /* Proporção 16:9 para vídeos */
+    max-width: 900px;
+    max-height: 506px;
+}
+
+.modal-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    font-size: 1.1rem;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animação para o modal */
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin-top: auto; /* Empurra o footer para o final da página */
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    .apod-controls, .mars-controls {
+        flex-direction: column;
+    }
+
+    .apod-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .apod-info p {
+        font-size: 0.9rem;
+    }
+
+    .modal-content.video-frame {
+        width: 90vw;
+        height: 50.625vw; /* Mantém 16:9 */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1rem;
+    }
+    header h1 {
+        font-size: 1.5rem;
+    }
+    nav button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    section h2 {
+        font-size: 1.5rem;
+    }
+    .apod-controls button, .mars-controls button, .mars-controls input[type="date"] {
+        width: 100%; /* Botões e input de data ocupam a largura total */
+    }
+}
