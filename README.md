@@ -67,7 +67,7 @@ Este projeto foi construído utilizando as seguintes tecnologias e ferramentas:
 
 ### Veja o Projeto Online!✨
 
-Você pode acessar uma versão deployada do Diário Espacial NASA a qualquer momento neste link:
+Você pode acessar uma versão deployada do Diário Espacial NASA a qualquer momento neste link (pode demorar alguns segundos):
 
 🔗 [Visite o Diário Espacial NASA no Render.com](https://diario-espacial-nasa.onrender.com)
 
